@@ -1,0 +1,26 @@
+body{
+	margin : 0px;
+}
+
+.container{
+	width : 70%;
+	margin : 0 auto;
+}
+
+.container h3{
+	text-align : center;
+}
+
+.inputForm{
+	margin : 0 auto;
+	width : 330px;
+}
+
+.login-box{
+	margin : 0 auto;
+}
+
+#result{
+	font-size : 15px;
+	color : red;
+}
