@@ -42,7 +42,7 @@
 	 
 	function goLogin(){
 		$.ajax({
-			url: "http://localhost:8080/aws/TestCall",
+			url: "/aws/TestCall",
             type: 'post',
             data: $("#loginForm").serialize(),
             success: function(data) {
