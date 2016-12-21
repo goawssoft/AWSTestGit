@@ -38,6 +38,11 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.6</version>
 		</dependency>
+		<dependency> 
+		  <groupId>com.amazonaws</groupId> 
+		  <artifactId>aws-xray-recorder-sdk-core</artifactId> 
+		  <version>1.0.0-beta</version> 
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>aws</finalName>
