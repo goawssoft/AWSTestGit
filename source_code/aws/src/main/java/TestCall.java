@@ -44,7 +44,7 @@ public class TestCall extends HttpServlet {
 	private boolean login(String userName , String userPassword){
 		boolean result = false;
 		
-		String SQLQuery = "SELECT USER_NAME FROM TESTAWS.USER_LOGIN WHERE USER_ID = ? AND USER_PASSWORD = ?";
+		String SQLQuery = "SELECT USER_NAME FROM USER_LOGIN WHERE USER_ID = ? AND USER_PASSWORD = ?";
 		Connection con = MySQLConnection.getConnection();
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
