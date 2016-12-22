@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+
+<Resource name="jdbc/testaws"
+auth="Container"
+type="javax.sql.DataSource"
+driverClassName="com.mysql.jdbc.Driver"
+maxActive="30"
+maxIdle="30"
+maxWait="10000"
+username="allticketmysql" 
+password="allticketmysql"
+url="jdbc:mysql://10.151.26.47:3306/allticket?useSSL=false" 
+factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" />
+
+</Context>
