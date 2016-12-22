@@ -1,0 +1,124 @@
+{
+    "pipeline": {
+        "roleArn": "arn:aws:iam::739898434686:role/AWS-CodePipeline-Service", 
+        "stages": [
+            {
+                "name": "Source", 
+                "actions": [
+                    {
+                        "inputArtifacts": [], 
+                        "name": "Source", 
+                        "actionTypeId": {
+                            "category": "Source", 
+                            "owner": "ThirdParty", 
+                            "version": "1", 
+                            "provider": "GitHub"
+                        }, 
+                        "outputArtifacts": [
+                            {
+                                "name": "MyApp"
+                            }
+                        ], 
+                        "configuration": {
+                            "Owner": "goawssoft", 
+                            "Repo": "AWSTestGit", 
+                            "Branch": "master", 
+                            "OAuthToken": "****"
+                        }, 
+                        "runOrder": 1
+                    }
+                ]
+            }, 
+            {
+                "name": "Build", 
+                "actions": [
+                    {
+                        "inputArtifacts": [
+                            {
+                                "name": "MyApp"
+                            }
+                        ], 
+                        "name": "Build", 
+                        "actionTypeId": {
+                            "category": "Build", 
+                            "owner": "Custom", 
+                            "version": "1", 
+                            "provider": "QA-DevOp-Provider"
+                        }, 
+                        "outputArtifacts": [
+                            {
+                                "name": "MyAppBuild"
+                            }
+                        ], 
+                        "configuration": {
+                            "ProjectName": "QA-DevOp-TestApp"
+                        }, 
+                        "runOrder": 1
+                    }
+                ]
+            }, 
+            {
+                "name": "Beta", 
+                "actions": [
+                    {
+                        "inputArtifacts": [
+                            {
+                                "name": "MyAppBuild"
+                            }
+                        ], 
+                        "name": "DevOp-TestApp", 
+                        "actionTypeId": {
+                            "category": "Deploy", 
+                            "owner": "AWS", 
+                            "version": "1", 
+                            "provider": "ElasticBeanstalk"
+                        }, 
+                        "outputArtifacts": [], 
+                        "configuration": {
+                            "ApplicationName": "QA-DevOp-TestApp", 
+                            "EnvironmentName": "DevOp-TestApp"
+                        }, 
+                        "runOrder": 1
+                    }, 
+                    {
+                        "inputArtifacts": [], 
+                        "name": "QA-TestR3", 
+                        "actionTypeId": {
+                            "category": "Test", 
+                            "owner": "Custom", 
+                            "version": "1", 
+                            "provider": "JmeterFree-Provider"
+                        }, 
+                        "outputArtifacts": [], 
+                        "configuration": {
+                            "ProjectName": "QA-DevOp-JmeterFree"
+                        }, 
+                        "runOrder": 2
+                    }, 
+                    {
+                        "inputArtifacts": [], 
+                        "name": "QA-Approve-PipeLine", 
+                        "actionTypeId": {
+                            "category": "Approval", 
+                            "owner": "AWS", 
+                            "version": "1", 
+                            "provider": "Manual"
+                        }, 
+                        "outputArtifacts": [], 
+                        "configuration": {
+                            "NotificationArn": "arn:aws:sns:ap-southeast-1:739898434686:QA-Approve-PipeLine", 
+                            "ExternalEntityLink": "http://devop-testapp.ap-southeast-1.elasticbeanstalk.com/aws/"
+                        }, 
+                        "runOrder": 3
+                    }
+                ]
+            }
+        ], 
+        "artifactStore": {
+            "type": "S3", 
+            "location": "codepipeline-ap-southeast-1-143753825948"
+        }, 
+        "name": "QA-DevOp-Pipeline-cicd", 
+        "version": 12
+    }
+}
