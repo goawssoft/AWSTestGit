@@ -27,16 +27,6 @@
     <!--
     <Manager pathname="" />
     -->
-	
-	<Resource name="jdbc/testaws"
-		auth="Container"
-		driverClassName="com.mysql.jdbc.Driver"
-		maxActive="100"
-		maxIdle="30"
-		maxWait="10000"
-		type="javax.sql.DataSource"
-		url="jdbc:mysql://10.151.26.47:3306/allticket?useSSL=false"
-		username="allticketmysql" password="allticketmysql" /> 
 
     <!-- Uncomment this to enable Comet connection tacking (provides events
          on session expiration as well as webapp lifecycle) -->
