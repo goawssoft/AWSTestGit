@@ -118,7 +118,7 @@
             "type": "S3", 
             "location": "codepipeline-ap-southeast-1-143753825948"
         }, 
-        "name": "QA-DevOp-Pipeline", 
+        "name": "QA-DevOp-Pipeline-cicd", 
         "version": 12
     }
 }
